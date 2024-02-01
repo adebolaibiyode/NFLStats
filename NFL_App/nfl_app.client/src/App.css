@@ -1,0 +1,145 @@
+﻿#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    font-size: 0.9em;
+    color: #333;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bold;
+}
+
+tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+    tbody tr:nth-of-type(even) {
+        background-color: #f9f9f9;
+    }
+
+    tbody tr:nth-of-type(odd) {
+        background-color: #ffffff;
+    }
+
+    tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+@media screen and (max-width: 600px) {
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+h3, h4 {
+    margin-top: 0;
+}
+
+.team-stat-card {
+    width: 100%; /* Increased width */
+    max-width: 1800px; /* Optional: maximum width limit */
+    margin: 1rem auto;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* other styles... */
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem; /* Adjust the gap between the two sections */
+}
+
+.home-team-stats-section, .visiting-team-stats-section {
+    flex: 1; /* This makes each div take up equal space */
+    border: 2px solid #333; /* More pronounced border */
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    /* other styles... */
+}
+
+.team-stats-section, .home-team-stats-section, .visiting-team-stats-section {
+    border: 2px solid #333; /* More pronounced border */
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 4px; /* Optional: adds rounded corners */
+    background-color: #f9f9f9; /* Optional: background color */
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+    .stats-container {
+        flex-direction: column;
+    }
+}
+
+
+.home-team-stats-section, .visiting-team-stats-section {
+    width: 100%; /* Take full width on smaller screens */
+    text-align: left;
+}
+
+.button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 15px 32px; /* Top and bottom padding of 15px, left and right padding of 32px */
+    text-align: center; /* Center the text inside the button */
+    text-decoration: none; /* Remove underlines from any text */
+    display: inline-block; /* Allows setting width and height */
+    font-size: 16px; /* Set font size */
+    margin: 4px 2px; /* Margin around the button */
+    cursor: pointer; /* Change mouse cursor to pointer when hovering over the button */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+    .button:hover {
+        background-color: #45a049; /* Darker shade of green when hovering */
+    }
+.input-box {
+    padding: 10px 15px; /* Padding inside the input box */
+    margin: 8px 0; /* Margin around the input box */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    font-size: 16px; /* Font size */
+    color: #333; /* Text color */
+    background-color: white; /* Background color */
+    width: 30%; /* Full width */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+    .input-box:focus {
+        border-color: #4CAF50; /* Change border color when the input box is focused */
+        outline: none; /* Remove the default focus outline */
+    }
+
+/*.team-stats-section tr, .home-team-stats-section tr, .visiting-team-stats-section tr {
+    border-bottom: 3px solid #000;*/ /* Thick line */
+/*}*/
+
+/* Optional: If you want the last section to not have a thick line */
+/*.visiting-team-stats-section tr {
+    border-bottom: none;
+}
+
