@@ -5,6 +5,7 @@ import './App.css';
 function App() {
     const [teamStats, setTeamStats] = useState([]);
     const [inputValue, setInputValue] = useState('25');
+    const [gameDate, setGameDate] = useState('');
 
     //Default data load
     useEffect(() => {
@@ -17,9 +18,14 @@ function App() {
     };
 
     const handleSubmit = async () => {
-        await populateNFLTeamData(inputValue);
-    };  
-    
+        const isValidDate = Date.parse(gameDate);
+        if (isValidDate) {
+            await fetchTeamStats(inputValue, gameDate);
+        } else {
+            await populateNFLTeamData(inputValue);
+        }
+    };
+
     async function populateNFLTeamData(teamId) {
         try {
             const response = await fetch(`https://localhost:7025/api/NFLApp/nflteamstat/${teamId}`); // Use template literals to insert the teamId
@@ -29,6 +35,34 @@ function App() {
         }
         catch (error) {
             console.log(error);
+            console.error('Failed to fetch team stats:', error);
+        }
+    }
+
+    async function fetchTeamStats(teamName, gamedate) {
+        try {
+            const requestBody = {
+                TeamName: teamName,
+                Query: gamedate
+            };
+
+            const response = await fetch('https://localhost:7025/api/NFLApp/getteamstat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            const data = await response.ok ? await response.json() : null;
+            if (data) {
+                console.log(data);
+                setTeamStats(data);
+            } else {
+                // Handle the case where no data is returned
+                console.log('No data returned for the query');
+            }
+        } catch (error) {
             console.error('Failed to fetch team stats:', error);
         }
     }
@@ -43,45 +77,45 @@ function App() {
                     <p>Final: {String(teamStat.isFinal)}</p>
                 </div>
                 <div className="stats-container">
-                {/* Home Team Stats */}
+                    {/* Home Team Stats */}
                     <div className="home-team-stats-section">
-                    <h4>Home Team: {teamStat.homeTeamName}</h4>                    
-                    <p>First Downs: {teamStat.homeStats.firstDowns || 0}</p>
-                    <p>Passing Yards: {teamStat.homeStats.passYds || 0}</p>
-                    <p>Rushing Yards: {teamStat.homeStats.rushYds || 0}</p>
-                    <p>Penalty Yards: {teamStat.homeStats.penaltYds || 0}</p>
-                    <p>Pass Comp: {teamStat.homeStats.passComp || 0}</p>
-                    <p>Points: {teamStat.homeStats.score || 0}</p>
-                    <p>Penalties: {teamStat.homeStats.penalties || 0}</p>
-                    <p>Fumbles Lost: {teamStat.homeStats.fumblesLost || 0}</p>
-                    <p>Interceptions Thrown: {teamStat.homeStats.interceptionsThrown || 0}</p>
+                        <h4>Home Team: {teamStat.homeTeamName}</h4>
+                        <p>First Downs: {teamStat.homeStats.firstDowns || 0}</p>
+                        <p>Passing Yards: {teamStat.homeStats.passYds || 0}</p>
+                        <p>Rushing Yards: {teamStat.homeStats.rushYds || 0}</p>
+                        <p>Penalty Yards: {teamStat.homeStats.penaltYds || 0}</p>
+                        <p>Pass Comp: {teamStat.homeStats.passComp || 0}</p>
+                        <p>Points: {teamStat.homeStats.score || 0}</p>
+                        <p>Penalties: {teamStat.homeStats.penalties || 0}</p>
+                        <p>Fumbles Lost: {teamStat.homeStats.fumblesLost || 0}</p>
+                        <p>Interceptions Thrown: {teamStat.homeStats.interceptionsThrown || 0}</p>
                         <p>Turnovers: {teamStat.homeStats.fumblesLost + teamStat.homeStats.interceptionsThrown}</p>
                         <p>Game Code: {teamStat.homeStats.gameCode || 0}</p>
-                </div>
+                    </div>
 
-                {/* Visiting Team Stats */}
-                <div className="visiting-team-stats-section">
-                    <h4>Visiting Team: {teamStat.visTeamName}</h4>
-                   
-                    <p>First Downs: {teamStat.visStats.firstDowns || 0}</p>
-                    <p>Passing Yards: {teamStat.visStats.passYds || 0}</p>
-                    <p>Rushing Yards: {teamStat.visStats.rushYds || 0}</p>
-                    <p>Penalty Yards: {teamStat.visStats.penaltYds || 0}</p>
-                    <p>Pass Comp: {teamStat.visStats.passComp || 0}</p>
-                    <p>Points: {teamStat.visStats.score || 0}</p>
-                    <p>Penalties: {teamStat.visStats.penalties || 0}</p>
-                    <p>Fumbles Lost: {teamStat.visStats.fumblesLost || 0}</p>
-                    <p>Interceptions Thrown: {teamStat.visStats.interceptionsThrown || 0}</p>
+                    {/* Visiting Team Stats */}
+                    <div className="visiting-team-stats-section">
+                        <h4>Visiting Team: {teamStat.visTeamName}</h4>
+
+                        <p>First Downs: {teamStat.visStats.firstDowns || 0}</p>
+                        <p>Passing Yards: {teamStat.visStats.passYds || 0}</p>
+                        <p>Rushing Yards: {teamStat.visStats.rushYds || 0}</p>
+                        <p>Penalty Yards: {teamStat.visStats.penaltYds || 0}</p>
+                        <p>Pass Comp: {teamStat.visStats.passComp || 0}</p>
+                        <p>Points: {teamStat.visStats.score || 0}</p>
+                        <p>Penalties: {teamStat.visStats.penalties || 0}</p>
+                        <p>Fumbles Lost: {teamStat.visStats.fumblesLost || 0}</p>
+                        <p>Interceptions Thrown: {teamStat.visStats.interceptionsThrown || 0}</p>
                         <p>Turnovers: {teamStat.visStats.fumblesLost + teamStat.visStats.interceptionsThrown}</p>
                         <p>Game Code: {teamStat.visStats.gameCode || 0}</p>
                     </div>
 
-                    </div>
+                </div>
             </div>
         ))
         : <p><em>Loading... </em></p>;
 
-  
+
     return (
         <div className='team-stat-card'>
             <h1 id="tabelLabel">NFL Team Statistics</h1>
@@ -93,6 +127,11 @@ function App() {
                     onChange={handleInputChange}
                     placeholder="Enter Team ID"
                 />
+                <input className='input-box'
+                    type="date"
+                    value={gameDate}
+                    onChange={(e) => setGameDate(e.target.value)}
+                    placeholder="Select Game Date" />
                 <button className='button' onClick={handleSubmit}>Fetch Team Stats</button>
             </div>
             <div className="team-stats-container">
@@ -100,7 +139,7 @@ function App() {
             </div>
         </div>
     );
-       
+
 
 }
 

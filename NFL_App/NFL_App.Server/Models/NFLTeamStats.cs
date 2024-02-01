@@ -40,4 +40,10 @@
         public int Score { get; set; }
     }
 
+    public class TeamStatsRequest
+    {
+        public required string TeamName { get; set; }
+        public string? Query { get; set; }
+    }
+
 }
