@@ -39,7 +39,7 @@ namespace NFL_App.Server.Controllers
             }
             catch (HttpRequestException e)
             {
-                // Log the exception (implementation depends on the logging framework being used)
+                // Log the exception 
                 return StatusCode(500, "Error accessing the NFL stats service");
             }
         }

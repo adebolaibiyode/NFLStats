@@ -25,7 +25,7 @@ namespace NFL_App.Server.Services
             // Convert the object to a JSON string
             string jsonString = JsonConvert.SerializeObject(jsonObject, Formatting.Indented);
 
-            // Ensure the directory exists
+            // Check directory exists
             var directory = Path.GetDirectoryName(filePath);
             if (!Directory.Exists(directory))
             {

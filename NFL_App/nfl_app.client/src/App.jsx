@@ -28,7 +28,7 @@ function App() {
 
     async function populateNFLTeamData(teamId) {
         try {
-            const response = await fetch(`https://localhost:7025/api/NFLApp/nflteamstat/${teamId}`); // Use template literals to insert the teamId
+            const response = await fetch(`https://localhost:7025/api/NFLApp/nflteamstat/${teamId}`); 
             const data = await response.ok ? await response.json() : [];
             console.log(data);
             setTeamStats(data);

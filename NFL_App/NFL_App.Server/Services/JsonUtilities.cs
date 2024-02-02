@@ -60,7 +60,7 @@ namespace NFL_App.Server.Services
             catch (FileNotFoundException ex)
             {
                 Console.WriteLine(ex.Message);
-                return null; // Or handle the exception as needed
+                return null; 
             }
         }
     }
