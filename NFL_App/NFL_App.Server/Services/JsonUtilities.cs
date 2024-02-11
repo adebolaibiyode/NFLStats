@@ -50,6 +50,13 @@ namespace NFL_App.Server.Services
 
         }
 
+        public void SaveJson(TeamInfo jsonObject, string filename)
+        {
+            var jsonFileWriter = new JsonFileWriter();
+            jsonFileWriter.SaveJsonToFile(jsonObject, Path.Combine("..", "Data", filename + ".json"));
+
+        }
+
         public string ReadJsonString(string filename)
         {
             var jsonFileReader = new JsonFileReader();

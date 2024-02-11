@@ -46,4 +46,15 @@
         public string? Query { get; set; }
     }
 
+    public class TeamData
+    {
+        public required string TeamName { get; set; }
+        public required string TeamCode { get; set; }
+    }
+
+    public class TeamInfo
+    {
+        public List<TeamData>? nflTeams { get; set; }
+    }
+
 }

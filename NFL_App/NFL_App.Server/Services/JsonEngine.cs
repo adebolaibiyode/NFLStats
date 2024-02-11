@@ -35,6 +35,22 @@ namespace NFL_App.Server.Services
             // Write the JSON string to a file
             File.WriteAllText(filePath, jsonString);
         }
+
+        public void SaveJsonToFile(TeamInfo jsonObject, string filePath)
+        {
+            // Convert the object to a JSON string
+            string jsonString = JsonConvert.SerializeObject(jsonObject, Formatting.Indented);
+
+            // Check directory exists
+            var directory = Path.GetDirectoryName(filePath);
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+            // Write the JSON string to a file
+            File.WriteAllText(filePath, jsonString);
+        }
     }
 
     public class JsonFileReader

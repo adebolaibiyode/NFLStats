@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\NFL_App",
+    "\\NFL_App\\nfl_app.client",
+    "\\NFL_App\\NFL_App.Server"
   ],
-  "SelectedNode": "\\C:\\Users\\AdebolaIbiyode\\source\\repos\\CSE681\\NFLStats",
+  "SelectedNode": "\\NFL_App\\NFL_App.Server\\NFL_App.Server.sln",
   "PreviewInSolutionExplorer": false
 }

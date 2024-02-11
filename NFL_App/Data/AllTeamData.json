@@ -1,0 +1,132 @@
+{
+  "nflTeams": [
+    {
+      "TeamName": "Cardinals",
+      "TeamCode": "1"
+    },
+    {
+      "TeamName": "Falcons",
+      "TeamCode": "2"
+    },
+    {
+      "TeamName": "Ravens",
+      "TeamCode": "3"
+    },
+    {
+      "TeamName": "Bills",
+      "TeamCode": "4"
+    },
+    {
+      "TeamName": "Panthers",
+      "TeamCode": "5"
+    },
+    {
+      "TeamName": "Bears",
+      "TeamCode": "6"
+    },
+    {
+      "TeamName": "Browns",
+      "TeamCode": "7"
+    },
+    {
+      "TeamName": "Cowboys",
+      "TeamCode": "8"
+    },
+    {
+      "TeamName": "Broncos",
+      "TeamCode": "9"
+    },
+    {
+      "TeamName": "Lions",
+      "TeamCode": "10"
+    },
+    {
+      "TeamName": "Packers",
+      "TeamCode": "11"
+    },
+    {
+      "TeamName": "Giants",
+      "TeamCode": "12"
+    },
+    {
+      "TeamName": "Colts",
+      "TeamCode": "13"
+    },
+    {
+      "TeamName": "Jaguars",
+      "TeamCode": "14"
+    },
+    {
+      "TeamName": "Chiefs",
+      "TeamCode": "15"
+    },
+    {
+      "TeamName": "Dolphins",
+      "TeamCode": "16"
+    },
+    {
+      "TeamName": "Vikings",
+      "TeamCode": "17"
+    },
+    {
+      "TeamName": "Patriots",
+      "TeamCode": "18"
+    },
+    {
+      "TeamName": "Saints",
+      "TeamCode": "19"
+    },
+    {
+      "TeamName": "Jets",
+      "TeamCode": "20"
+    },
+    {
+      "TeamName": "Raiders",
+      "TeamCode": "21"
+    },
+    {
+      "TeamName": "Eagles",
+      "TeamCode": "22"
+    },
+    {
+      "TeamName": "Steelers",
+      "TeamCode": "23"
+    },
+    {
+      "TeamName": "Chargers",
+      "TeamCode": "24"
+    },
+    {
+      "TeamName": "Seahawks",
+      "TeamCode": "25"
+    },
+    {
+      "TeamName": "49ers",
+      "TeamCode": "26"
+    },
+    {
+      "TeamName": "Rams",
+      "TeamCode": "27"
+    },
+    {
+      "TeamName": "Buccaneers",
+      "TeamCode": "28"
+    },
+    {
+      "TeamName": "Titans",
+      "TeamCode": "29"
+    },
+    {
+      "TeamName": "Washington",
+      "TeamCode": "30"
+    },
+    {
+      "TeamName": "Bengals",
+      "TeamCode": "31"
+    },
+    {
+      "TeamName": "Texans",
+      "TeamCode": "32"
+    }
+  ]
+}
