@@ -32,10 +32,36 @@ namespace NFL_App.Server.Controllers
                 if (teamData == null)
                     continue;
                 var teamStats = teamData.matchUpStats[0];
+                int gamesWon = 0;
+                int gamesLost = 0;
+
+                // Loop through the matchUpStats and count the games won and lost
+                for (int j = 0; j < teamData.matchUpStats.Count; j++)
+                {
+                    if (teamData.matchUpStats[j].visStats.TeamCode == i)
+                    {
+                        if (teamData.matchUpStats[j].visStats.Score > teamData.matchUpStats[j].homeStats.Score)
+                            gamesWon++;
+                        else
+                            gamesLost++;
+                    }
+                    else
+                    {
+                        if (teamData.matchUpStats[j].homeStats.TeamCode == i)
+                        {
+                            if (teamData.matchUpStats[j].homeStats.Score > teamData.matchUpStats[j].visStats.Score)
+                                gamesWon++;
+                            else
+                                gamesLost++;
+                        }
+                    }
+                }   
                 var team = new TeamData
                 {
                     TeamName = teamStats.visStats.TeamCode.ToString() == i.ToString()? teamStats.visTeamName : teamStats.homeTeamName,
-                    TeamCode = i.ToString()
+                    TeamCode = i.ToString(),
+                    GamesWon = gamesWon,
+                    GamesLost = gamesLost                  
                 };
                 allTeamData.Add(team);
             

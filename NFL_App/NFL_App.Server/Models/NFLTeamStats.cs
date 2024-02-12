@@ -50,6 +50,8 @@
     {
         public required string TeamName { get; set; }
         public required string TeamCode { get; set; }
+        public int GamesWon { get; set; } = 0;
+        public int GamesLost { get; set; } = 0;
     }
 
     public class TeamInfo

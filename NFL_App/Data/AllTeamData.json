@@ -2,131 +2,195 @@
   "nflTeams": [
     {
       "TeamName": "Cardinals",
-      "TeamCode": "1"
+      "TeamCode": "1",
+      "GamesWon": 8,
+      "GamesLost": 8
     },
     {
       "TeamName": "Falcons",
-      "TeamCode": "2"
+      "TeamCode": "2",
+      "GamesWon": 4,
+      "GamesLost": 12
     },
     {
       "TeamName": "Ravens",
-      "TeamCode": "3"
+      "TeamCode": "3",
+      "GamesWon": 11,
+      "GamesLost": 5
     },
     {
       "TeamName": "Bills",
-      "TeamCode": "4"
+      "TeamCode": "4",
+      "GamesWon": 15,
+      "GamesLost": 4
     },
     {
       "TeamName": "Panthers",
-      "TeamCode": "5"
+      "TeamCode": "5",
+      "GamesWon": 5,
+      "GamesLost": 11
     },
     {
       "TeamName": "Bears",
-      "TeamCode": "6"
+      "TeamCode": "6",
+      "GamesWon": 8,
+      "GamesLost": 9
     },
     {
       "TeamName": "Browns",
-      "TeamCode": "7"
+      "TeamCode": "7",
+      "GamesWon": 12,
+      "GamesLost": 6
     },
     {
       "TeamName": "Cowboys",
-      "TeamCode": "8"
+      "TeamCode": "8",
+      "GamesWon": 6,
+      "GamesLost": 9
     },
     {
       "TeamName": "Broncos",
-      "TeamCode": "9"
+      "TeamCode": "9",
+      "GamesWon": 5,
+      "GamesLost": 11
     },
     {
       "TeamName": "Lions",
-      "TeamCode": "10"
+      "TeamCode": "10",
+      "GamesWon": 5,
+      "GamesLost": 11
     },
     {
       "TeamName": "Packers",
-      "TeamCode": "11"
+      "TeamCode": "11",
+      "GamesWon": 14,
+      "GamesLost": 4
     },
     {
       "TeamName": "Giants",
-      "TeamCode": "12"
+      "TeamCode": "12",
+      "GamesWon": 6,
+      "GamesLost": 10
     },
     {
       "TeamName": "Colts",
-      "TeamCode": "13"
+      "TeamCode": "13",
+      "GamesWon": 11,
+      "GamesLost": 6
     },
     {
       "TeamName": "Jaguars",
-      "TeamCode": "14"
+      "TeamCode": "14",
+      "GamesWon": 1,
+      "GamesLost": 15
     },
     {
       "TeamName": "Chiefs",
-      "TeamCode": "15"
+      "TeamCode": "15",
+      "GamesWon": 16,
+      "GamesLost": 2
     },
     {
       "TeamName": "Dolphins",
-      "TeamCode": "16"
+      "TeamCode": "16",
+      "GamesWon": 10,
+      "GamesLost": 6
     },
     {
       "TeamName": "Vikings",
-      "TeamCode": "17"
+      "TeamCode": "17",
+      "GamesWon": 7,
+      "GamesLost": 9
     },
     {
       "TeamName": "Patriots",
-      "TeamCode": "18"
+      "TeamCode": "18",
+      "GamesWon": 7,
+      "GamesLost": 9
     },
     {
       "TeamName": "Saints",
-      "TeamCode": "19"
+      "TeamCode": "19",
+      "GamesWon": 13,
+      "GamesLost": 5
     },
     {
       "TeamName": "Jets",
-      "TeamCode": "20"
+      "TeamCode": "20",
+      "GamesWon": 2,
+      "GamesLost": 14
     },
     {
       "TeamName": "Raiders",
-      "TeamCode": "21"
+      "TeamCode": "21",
+      "GamesWon": 8,
+      "GamesLost": 8
     },
     {
       "TeamName": "Eagles",
-      "TeamCode": "22"
+      "TeamCode": "22",
+      "GamesWon": 4,
+      "GamesLost": 12
     },
     {
       "TeamName": "Steelers",
-      "TeamCode": "23"
+      "TeamCode": "23",
+      "GamesWon": 11,
+      "GamesLost": 5
     },
     {
       "TeamName": "Chargers",
-      "TeamCode": "24"
+      "TeamCode": "24",
+      "GamesWon": 7,
+      "GamesLost": 9
     },
     {
       "TeamName": "Seahawks",
-      "TeamCode": "25"
+      "TeamCode": "25",
+      "GamesWon": 12,
+      "GamesLost": 5
     },
     {
       "TeamName": "49ers",
-      "TeamCode": "26"
+      "TeamCode": "26",
+      "GamesWon": 6,
+      "GamesLost": 10
     },
     {
       "TeamName": "Rams",
-      "TeamCode": "27"
+      "TeamCode": "27",
+      "GamesWon": 11,
+      "GamesLost": 7
     },
     {
       "TeamName": "Buccaneers",
-      "TeamCode": "28"
+      "TeamCode": "28",
+      "GamesWon": 14,
+      "GamesLost": 5
     },
     {
       "TeamName": "Titans",
-      "TeamCode": "29"
+      "TeamCode": "29",
+      "GamesWon": 11,
+      "GamesLost": 6
     },
     {
       "TeamName": "Washington",
-      "TeamCode": "30"
+      "TeamCode": "30",
+      "GamesWon": 7,
+      "GamesLost": 10
     },
     {
       "TeamName": "Bengals",
-      "TeamCode": "31"
+      "TeamCode": "31",
+      "GamesWon": 4,
+      "GamesLost": 12
     },
     {
       "TeamName": "Texans",
-      "TeamCode": "32"
+      "TeamCode": "32",
+      "GamesWon": 4,
+      "GamesLost": 12
     }
   ]
 }
