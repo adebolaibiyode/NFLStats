@@ -87,5 +87,21 @@ namespace NFL_App.Server.Controllers
                 return null;
             
         }
+
+        [HttpGet("FetchAllTeamsDataBus")]
+        public async Task<IActionResult> FetchAllTeamsDataBus()
+        {
+            // Ideally, this data could come from the request or be predefined.
+            var teamFetchRequest = new { RequestType = "" };
+
+            var serviceBusPublisher = new AzureServiceBusPublisher(
+                "AzureServiceBusConnectionString",
+                "FetchAllTeamsData");
+
+            await serviceBusPublisher.SendMessageAsync(teamFetchRequest);
+
+            return Accepted("Request to fetch all teams data has been queued.");
+        }
+
     }
 }

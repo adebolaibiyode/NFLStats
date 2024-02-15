@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using NFL_App.Models;
+using NFL_App.Server.MessageQueue;
 using NFL_App.Server.Services;
 
 namespace NFL_App.Server.Controllers
@@ -92,5 +93,15 @@ namespace NFL_App.Server.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
+        [HttpPost("fetchTeamStats")]
+        public async Task<ActionResult> FetchTeamStats([FromBody] TeamStatsRequest request)
+        {
+            var serviceBusManager = new ServiceBusManager();
+            await serviceBusManager.SendMessageAsync(request);
+
+            return Accepted(); // Acknowledge that the request has been received and will be processed
+        }
+
     }
 }
