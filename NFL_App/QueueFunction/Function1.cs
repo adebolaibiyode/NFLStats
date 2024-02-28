@@ -9,7 +9,8 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Collections.Generic;
 using QueueFunction.model;
-using Microsoft.Azure.WebJobs.Extensions;   
+using Azure;
+using QueueFunction.Services;
 
 
 namespace QueueFunction
@@ -25,9 +26,7 @@ namespace QueueFunction
             ILogger log)
         {
             log.LogInformation($"Processing queue item: {myQueueItem}");
-
-            // Assuming the queue item might be a simple command or could contain specific parameters
-            // For simplicity, let's say myQueueItem could be just a trigger to start the process
+           
             var baseAddress = "https://sports.snoozle.net/search/nfl/searchHandler";
 
             var allTeamData = new List<TeamData>();
@@ -35,33 +34,80 @@ namespace QueueFunction
             for (int i = 1; i <= 32; i++)
             {
                 string requestUri = $"{baseAddress}?fileType=inline&statType=teamStats&season=2020&teamName={i}";
+
+                MatchUpStats teamData = await FetchTeamData(requestUri);
+                log.LogInformation($"Fetched data for team {i}: {teamData}");
+
+                if (teamData == null)
+                {
+                    log.LogError($"Failed to fetch data for team {i}.");
+                    continue;
+                }
+                var teamStats = teamData.matchUpStats[0];
+                int gamesWon = 0;
+                int gamesLost = 0;
                 try
                 {
-                    HttpResponseMessage response = await httpClient.GetAsync(requestUri);
-                    if (response.IsSuccessStatusCode)
+                    // Loop through the matchUpStats and count the games won and lost
+                    for (int j = 0; j < teamData.matchUpStats.Count; j++)
                     {
-                        string json = await response.Content.ReadAsStringAsync();
-                        var teamData = JsonConvert.DeserializeObject(json); // Assuming deserialization to a known type
-
-                        // Process the fetched data (e.g., store it in a database or further processing)
-                        // For demonstration, we'll log the fetched data
-                        log.LogInformation($"Fetched data for team {i}: {json}");
-
-                        // Here you would add your logic to store the fetched data
-                        // For example, saving it to a database or sending it to another queue for further processing
+                        if (teamData.matchUpStats[j].visStats.TeamCode == i)
+                        {
+                            if (teamData.matchUpStats[j].visStats.Score > teamData.matchUpStats[j].homeStats.Score)
+                                gamesWon++;
+                            else
+                                gamesLost++;
+                        }
+                        else
+                        {
+                            if (teamData.matchUpStats[j].homeStats.TeamCode == i)
+                            {
+                                if (teamData.matchUpStats[j].homeStats.Score > teamData.matchUpStats[j].visStats.Score)
+                                    gamesWon++;
+                                else
+                                    gamesLost++;
+                            }
+                        }
                     }
-                    else
+                    var team = new TeamData
                     {
-                        log.LogError($"Failed to fetch data for team {i}. HTTP status: {response.StatusCode}");
-                    }
+                        TeamName = teamStats.visStats.TeamCode.ToString() == i.ToString() ? teamStats.visTeamName : teamStats.homeTeamName,
+                        TeamCode = i.ToString(),
+                        GamesWon = gamesWon,
+                        GamesLost = gamesLost
+                    };
+                    allTeamData.Add(team);                   
                 }
                 catch (HttpRequestException ex)
                 {
                     log.LogError($"An error occurred while fetching data for team {i}: {ex.Message}");
                 }
             }
+            var teamInfo = new TeamInfo
+            {
+                nflTeams = allTeamData
+            };
+            var jsonUtilities = new JsonUtilities();
+            jsonUtilities.SaveJson(teamInfo, "AllTeamData");
+            log.LogInformation($"Saved data for all teams: {teamInfo}");
+            //return Ok(allTeamData);
+        }
+
+        private static async Task<MatchUpStats> FetchTeamData(string requestUri)
+        {
+            //var httpClient = _httpClientFactory.CreateClient();
+            var response = await httpClient.GetStringAsync(requestUri);
+            MatchUpStats matchUpStats = JsonConvert.DeserializeObject<MatchUpStats>(response);
+            
+            if (matchUpStats != null && matchUpStats.matchUpStats.Count > 0)
+                return matchUpStats;
+            else
+                return null;
+
         }
     }
+
+
     public static class Function1
     {
         [FunctionName("Function1")]

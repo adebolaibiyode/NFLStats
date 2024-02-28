@@ -72,6 +72,7 @@ namespace NFL_App.Server.Controllers
             };
             var jsonUtilities = new JsonUtilities();
             jsonUtilities.SaveJson(teamInfo, "AllTeamData");
+            FetchAllTeamsDataBus();
             return Ok(allTeamData);
         }
 
@@ -91,12 +92,13 @@ namespace NFL_App.Server.Controllers
         [HttpGet("FetchAllTeamsDataBus")]
         public async Task<IActionResult> FetchAllTeamsDataBus()
         {
-            // Ideally, this data could come from the request or be predefined.
             var teamFetchRequest = new { RequestType = "" };
-
+            var queueName ="FetchAllTeamsData";
+            var queueId = Guid.NewGuid().ToString();
+            var AzureServiceBusConnectionString = "Endpoint=sb://devserviceb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=3TpDtskSRdwF7YqqDQAL4oZRO6PY/4XCM+ASbIsD/7Y=";
             var serviceBusPublisher = new AzureServiceBusPublisher(
-                "AzureServiceBusConnectionString",
-                "FetchAllTeamsData");
+                AzureServiceBusConnectionString,
+                queueName);
 
             await serviceBusPublisher.SendMessageAsync(teamFetchRequest);
 
