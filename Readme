@@ -1,1 +1,9 @@
-r
+3 applications
+- nfl_app.client : React app
+- nfl_app.server : aspnet core app (controllers and logic)
+	- The solution file is here.
+- QueueFunction : Azure function to trigger service bus logic
+
+To run the application:
+ - Both the nfl_app.server and queuefunction must be hosted and running.
+
