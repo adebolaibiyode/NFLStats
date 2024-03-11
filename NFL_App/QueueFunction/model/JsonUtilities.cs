@@ -8,6 +8,7 @@ namespace QueueFunction.Services
 {
     public class JsonUtilities
     {
+        // This method reads a JSON file and returns the JSON string
         public MatchUpStats GetNFLStats(string jsonString)
         {
             // Parse the JSON string into a JObject
@@ -20,6 +21,7 @@ namespace QueueFunction.Services
             return teamStatsObject;
         }
 
+        // This method reads a JSON file and returns the JSON string
         public NFLTeamStats GetTeamStats(string jsonString, string query)
         {
             // Parse the JSON string into a JObject
@@ -32,6 +34,7 @@ namespace QueueFunction.Services
             return teamStatsObject;
         }
 
+        // This method reads a JSON file and returns the JSON string
         public static NFLTeamStats GetTeamStats(string jsonString, string query, string query2)
         {
             // Parse the JSON string into a JObject
@@ -44,6 +47,7 @@ namespace QueueFunction.Services
             return teamStatsObject;
         }
 
+        // This method reads a JSON file and returns the JSON string
         public void SaveJson(MatchUpStats jsonObject, string filename)
         {
             var jsonFileWriter = new JsonFileWriter();
@@ -51,13 +55,14 @@ namespace QueueFunction.Services
 
         }
 
+        // This method reads parsed JSON file and returns the JSON string
         public void SaveJson(TeamInfo jsonObject, string filename)
         {
             var jsonFileWriter = new JsonFileWriter();
             jsonFileWriter.SaveJsonToFile(jsonObject, Path.Combine("..", "Data", filename + ".json"));
 
         }
-
+        // This method reads a JSON file and returns the JSON string
         public string ReadJsonString(string filename)
         {
             var jsonFileReader = new JsonFileReader();

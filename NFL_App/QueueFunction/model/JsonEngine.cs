@@ -6,6 +6,7 @@ using System.IO;
 
 namespace QueueFunction.Services
 {
+    // This class is used to query and manipulate JSON data
     public class JsonQueryEngine
     {
         public JToken Query(string jsonString, string query)
@@ -18,6 +19,7 @@ namespace QueueFunction.Services
         }
     }
 
+    // This class is used to write JSON data to a file
     public class JsonFileWriter
     {
         public void SaveJsonToFile(MatchUpStats jsonObject, string filePath)
@@ -53,6 +55,7 @@ namespace QueueFunction.Services
         }
     }
 
+    // This class is used to read JSON data from a file
     public class JsonFileReader
     {
         public string ReadJsonFromFile(string filePath)

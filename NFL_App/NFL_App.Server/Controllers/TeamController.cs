@@ -76,6 +76,7 @@ namespace NFL_App.Server.Controllers
             return Ok(allTeamData);
         }
 
+        // GET: api/Team/FetchTeamData -- Fetch team data method.
         private async Task<MatchUpStats> FetchTeamData(string requestUri)
         {
             var httpClient = _httpClientFactory.CreateClient();
@@ -89,6 +90,7 @@ namespace NFL_App.Server.Controllers
             
         }
 
+        // GET: api/Team/FetchAllTeamsDataBus -- Fetch all teams data method.
         [HttpGet("FetchAllTeamsDataBus")]
         public async Task<IActionResult> FetchAllTeamsDataBus()
         {

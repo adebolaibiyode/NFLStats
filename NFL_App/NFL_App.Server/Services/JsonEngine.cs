@@ -6,6 +6,7 @@ using System.IO;
 
 namespace NFL_App.Server.Services
 {
+    // This class is used to query and manipulate JSON data
     public class JsonQueryEngine
     {
         public JToken Query(string jsonString, string query)
@@ -18,8 +19,10 @@ namespace NFL_App.Server.Services
         }
     }
 
+    // This class is used to write JSON data to a file
     public class JsonFileWriter
     {
+        // Save the JSON object for MatchupStat to a file
         public void SaveJsonToFile(MatchUpStats jsonObject, string filePath)
         {
             // Convert the object to a JSON string
@@ -36,6 +39,7 @@ namespace NFL_App.Server.Services
             File.WriteAllText(filePath, jsonString);
         }
 
+        // Save the JSON object for TeamInfo to a file
         public void SaveJsonToFile(TeamInfo jsonObject, string filePath)
         {
             // Convert the object to a JSON string
@@ -53,8 +57,10 @@ namespace NFL_App.Server.Services
         }
     }
 
+    // This class is used to read JSON data from a file
     public class JsonFileReader
     {
+        // Read the JSON data from a file
         public string ReadJsonFromFile(string filePath)
         {
             // Check if the file exists

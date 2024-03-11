@@ -18,6 +18,7 @@ namespace NFL_App.Server.Controllers
             _httpClientFactory = httpClientFactory;            
         }
 
+        // GET: api/NFLApp 
         [HttpGet("nflteamstat/{teamName}")]
         public async Task<ActionResult<NFLTeamStats>> GetTeamStats(int teamName)
         {
@@ -45,6 +46,7 @@ namespace NFL_App.Server.Controllers
             }
         }
 
+        // GET: api/NFLApp -- Fetch Team Stats method.
         [HttpGet("getteamstat/{teamName}")]
         public async Task<ActionResult<NFLTeamStats>> QTeamStats(string teamName)
         {
@@ -67,6 +69,7 @@ namespace NFL_App.Server.Controllers
             }
         }
 
+        // POST: api/NFLApp -- Fetch Team Stats method.
         [HttpPost("getteamstat")]
         public async Task<ActionResult<NFLTeamStats>> QueryTeamStats([FromBody] TeamStatsRequest request)
         {
@@ -94,6 +97,7 @@ namespace NFL_App.Server.Controllers
             }
         }
 
+        // POST: api/NFLApp -- FetchTeamStats method to send a message to the Service Bus.
         [HttpPost("fetchTeamStats")]
         public async Task<ActionResult> FetchTeamStats([FromBody] TeamStatsRequest request)
         {

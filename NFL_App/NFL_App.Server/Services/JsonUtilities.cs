@@ -5,8 +5,10 @@ using System;
 
 namespace NFL_App.Server.Services
 {
+    // This class is used to query and manipulate JSON data
     public class JsonUtilities
     {
+        // This method is used to query the JSON data for the NFL stats
         public MatchUpStats GetNFLStats(string jsonString)
         {
             // Parse the JSON string into a JObject
@@ -19,6 +21,7 @@ namespace NFL_App.Server.Services
             return teamStatsObject;
         }
 
+        // This method is used to query the JSON data for the NFL team stats
         public NFLTeamStats GetTeamStats(string jsonString, string query)
         {
             // Parse the JSON string into a JObject
@@ -31,6 +34,7 @@ namespace NFL_App.Server.Services
             return teamStatsObject;
         }
 
+        // This method is used to query the JSON data for the NFL team stats
         public static NFLTeamStats GetTeamStats(string jsonString, string query, string query2)
         {
             // Parse the JSON string into a JObject
@@ -43,6 +47,7 @@ namespace NFL_App.Server.Services
             return teamStatsObject;
         }
 
+        // This method is used to save the JSON data to a file
         public void SaveJson(MatchUpStats jsonObject, string filename)
         {
             var jsonFileWriter = new JsonFileWriter();
@@ -50,6 +55,7 @@ namespace NFL_App.Server.Services
 
         }
 
+        // This method is used to save the JSON data to a file
         public void SaveJson(TeamInfo jsonObject, string filename)
         {
             var jsonFileWriter = new JsonFileWriter();
@@ -57,6 +63,7 @@ namespace NFL_App.Server.Services
 
         }
 
+        // This method is used to read the JSON data from a file
         public string ReadJsonString(string filename)
         {
             var jsonFileReader = new JsonFileReader();

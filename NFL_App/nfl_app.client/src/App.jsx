@@ -3,10 +3,7 @@ import './App.css';
 
 
 function App() {
-    //const [teamStats, setTeamStats] = useState([]);
-    //
-    //const [gameDate, setGameDate] = useState('');
-
+  
     const [teams, setTeams] = useState([]); // For dropdown population
     const [teamStats, setTeamStats] = useState([]); // For fetched team stats
     const [selectedTeamId, setSelectedTeamId] = useState('');
@@ -42,6 +39,7 @@ function App() {
         setInputValue(e.target.value);
     };
 
+    // Handle form submission
     const handleSubmit = async () => {
         const isValidDate = Date.parse(gameDate);
         if (isValidDate) {
@@ -51,6 +49,7 @@ function App() {
         }
     };
 
+    //populate team data
     async function populateNFLTeamData(teamId) {
         try {
             const response = await fetch(`https://localhost:7025/api/NFLApp/nflteamstat/${teamId}`); 
@@ -64,6 +63,7 @@ function App() {
         }
     }
 
+    // Fetch team stats
     async function fetchTeamStats(teamName, gamedate) {
         try {
             const requestBody = {
@@ -132,6 +132,8 @@ function App() {
     const handleDisplaySavedData = () => {
         console.log(teamStats);
     };
+
+    //Splits game code into meaningful parts for display
     function parseGameCode(gameCode) {
         if (!gameCode || gameCode.length !== 16) return { visitorCode: 'N/A', homeTeamCode: 'N/A', gameDate: 'Invalid Date' };
 
@@ -143,6 +145,7 @@ function App() {
         return { visitorCode, homeTeamCode, gameDate };
     }
 
+    // Display team stats content based on the fetched data or a message if no data is available
     const teamStatsContent = teamStats.matchUpStats && teamStats.matchUpStats.length > 0
         ? teamStats.matchUpStats.map(teamStat => {
             // Move the parseGameCode calls outside the JSX return statement

@@ -19,6 +19,7 @@ namespace QueueFunction
     {
         private static readonly HttpClient httpClient = new HttpClient();
 
+        // GET: api/Team/FetchTeamData -- Fetch team data method.
         [FunctionName("FetchTeamData")]
         public static async Task Run(
             [ServiceBusTrigger("FetchAllTeamsData", Connection = "ServiceBusConnection")]
@@ -93,6 +94,7 @@ namespace QueueFunction
             //return Ok(allTeamData);
         }
 
+        // GET: api/Team/FetchTeamData -- Fetch team data method.
         private static async Task<MatchUpStats> FetchTeamData(string requestUri)
         {
             //var httpClient = _httpClientFactory.CreateClient();
